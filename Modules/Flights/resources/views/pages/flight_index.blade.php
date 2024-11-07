@@ -4,6 +4,8 @@
 
 @section('content')
   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+  
+  @include('home::includes.toast')
 
   <main>
     <!-- Total container-->
