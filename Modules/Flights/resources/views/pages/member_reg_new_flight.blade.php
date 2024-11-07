@@ -25,9 +25,17 @@
           <!-- DATE -->
           <div class="form-group mt-2">
             <h5 class="text-white font-weight-bold">Datum:</h5>
-            <input type="date" id="date" name="date" class="form-control" value="{{ old('date') }}" required>
+            <input type="date" id="date" name="date" class="form-control" required value="2017-06-01" />
           </div>
 
+          <script>
+            var today = new Date();
+            var dd = ("0" + (today.getDate())).slice(-2);
+            var mm = ("0" + (today.getMonth() +　1)).slice(-2);
+            var yyyy = today.getFullYear();
+            today = yyyy + '-' + mm + '-' + dd ;
+            $("#date").attr("value", today);
+          </script>
           <hr class="mt-3 mb-3">
 
           <!-- TIME -->
@@ -155,6 +163,17 @@
     </style>
 
     <script>
+      let date = new Date();
+      let nlDateTime = date.toLocaleString('nl', {timeZone: 'Europe/Amsterdam'});
+      let nlDate = nlDateTime.split(' ')[0]
+      console.log(nlDate)
+      let nlTime = nlDateTime.split(' ')[1]
+      let nlTime2 = nlTime.slice(0, -3);
+
+      document.getElementById('date').value = '10/05/2001';
+      document.getElementById('start_time').value = nlTime2;
+      document.getElementById('end_time').value = nlTime2 + 7;
+
       document.addEventListener('DOMContentLoaded', async () => {
         // Do nothing if browser doesn't support local storage
         if(typeof Storage === 'undefined') return;
